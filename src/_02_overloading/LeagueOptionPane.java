@@ -1,11 +1,13 @@
 package _02_overloading;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -17,13 +19,19 @@ import javax.swing.JPanel;
  */
 public class LeagueOptionPane {
 	
+	
 	public static void showMessageDialog(String message) {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
 		
+		JFrame frame = new JFrame();
+		JLabel label = new JLabel();
+		frame.add(label);
+		label.setIcon(loadImage("league.png"));
+		
+		label.setText(message);
 		frame.setVisible(true);
+		frame.pack();
 		 
 		
 		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
@@ -35,20 +43,53 @@ public class LeagueOptionPane {
 
 	// 4. Create another showMessageDialog() method that lets us also choose the Message and Title 
 	//    2 String parameters (one for the message and one for the title)
-	
+	    public static void showMessageDialog(String message, String title) {
+	    	JFrame frame = new JFrame();
+			JLabel label = new JLabel();
+			frame.add(label);
+			label.setIcon(loadImage("league.png"));
+			
+			label.setText(message);
+			frame.setTitle(title);
+			frame.setVisible(true);
+			frame.pack();
+	    }
 	// 5. Call this method in the Runner class
-	
+	  
 	
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
-	
+	    public static JPanel showMessageDialog(String message, String title,String fileName) {
+	    	JFrame frame = new JFrame();
+	    	JPanel panel = new JPanel();
+			JLabel label = new JLabel();
+			frame.add(label);
+			label.setIcon(loadImage(fileName));
+			
+			label.setText(message);
+			frame.setTitle(title);
+			frame.setVisible(true);
+			frame.pack();
+			return panel;
+	    }
 	// 7. Call this method in the Runner class
 	
 	// CHALLENGE: 
 		//	1. Create another showMessageDialog() method that lets us choose the Message, Title, Image, and Background Color
 		//     3 String parameters (one for the message, one for the title, and one for the fileName)
 		//	   1 Color parameter for the backgroundColor
-		//			
+	    public static void showMessageDialog(String message, String title,String fileName,Color backgroundColor) {
+	    	JFrame frame = new JFrame();
+			JLabel label = new JLabel();
+			frame.add(label);
+			label.setIcon(loadImage(fileName));
+			frame.getContentPane().setBackground(backgroundColor);
+
+			label.setText(message);
+			frame.setTitle(title);
+			frame.setVisible(true);
+			frame.pack();
+	    }
 		//	2. Change the return type of the 3rd showMessageDialog() method(the one right above) to JPanel
 		//	   Make sure to return your panel at the end of that method
 		//	
