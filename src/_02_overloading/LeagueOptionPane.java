@@ -59,11 +59,14 @@ public class LeagueOptionPane {
 	
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
-	    public static JPanel showMessageDialog(String message, String title,String fileName) {
+	    public static JPanel  showMessageDialog(String message, String title,String fileName) {
 	    	JFrame frame = new JFrame();
 	    	JPanel panel = new JPanel();
 			JLabel label = new JLabel();
-			frame.add(label);
+			
+			frame.add(panel);
+			panel.add(label);
+			
 			label.setIcon(loadImage(fileName));
 			
 			label.setText(message);
@@ -71,6 +74,7 @@ public class LeagueOptionPane {
 			frame.setVisible(true);
 			frame.pack();
 			return panel;
+			
 	    }
 	// 7. Call this method in the Runner class
 	
@@ -79,16 +83,15 @@ public class LeagueOptionPane {
 		//     3 String parameters (one for the message, one for the title, and one for the fileName)
 		//	   1 Color parameter for the backgroundColor
 	    public static void showMessageDialog(String message, String title,String fileName,Color backgroundColor) {
-	    	JFrame frame = new JFrame();
-			JLabel label = new JLabel();
-			frame.add(label);
-			label.setIcon(loadImage(fileName));
-			frame.getContentPane().setBackground(backgroundColor);
-
-			label.setText(message);
-			frame.setTitle(title);
-			frame.setVisible(true);
-			frame.pack();
+	    
+			 JPanel panel =  showMessageDialog(message,title,fileName);
+			
+				
+				panel.setBackground(backgroundColor);
+	        
+				
+			
+			
 	    }
 		//	2. Change the return type of the 3rd showMessageDialog() method(the one right above) to JPanel
 		//	   Make sure to return your panel at the end of that method
