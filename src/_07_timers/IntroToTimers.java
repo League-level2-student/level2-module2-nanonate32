@@ -25,7 +25,7 @@ public class IntroToTimers extends JPanel implements ActionListener, KeyListener
 	Font font = new Font("Arial", Font.BOLD, 50);
 	int time;
 	int maxTime = 45;
-	int speed = 30;
+	int speed = 10;
 	
 	// 1. Declare a Timer variable, but do not initialize it.
      Timer timer;
@@ -51,15 +51,23 @@ public class IntroToTimers extends JPanel implements ActionListener, KeyListener
 		// 12. Make the timer start!
                timer.start();
 		// 13. Run the program. Is it possible for you to win? 
+               
 		// 14. Figure out how to make it harder or easier! (Which condition is most related to whether you win or not?)
+              
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 8. Decrement time
-
+          time--;
+          
+          
+        	  
+         
 		// 9. if time is less than or equal to 2...
-
+                  if(time < 0) {
+                	  time = maxTime;
+                  }
 			// 10. Set time equal to maxTime
 
 		
@@ -71,15 +79,22 @@ public class IntroToTimers extends JPanel implements ActionListener, KeyListener
 		int keyCode = e.getKeyCode();
 		
 		// 4. if keyCode is 32 (that's the spacebar key!)...
-
+                 if(keyCode == 32) {
+                	 
+                 
 
 			// 5. if time is less than 2...
-
+               if(time < 2) {
+            	   JOptionPane.showMessageDialog(null, "You Win!");
+               }
+                 }
 				// 6. Tell them they win!
 
 			
 			// 7. Otherwise, set time equal to maxTime
-
+                 else {
+                	 time = maxTime;
+                 }
 		
 	}
 
