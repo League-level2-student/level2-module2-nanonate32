@@ -11,10 +11,10 @@ int y;
 
 // Add a constructor with parameters to initialize each variable.
 Segment(int x,int y){
-  y.this = y;
-  x.this = x;
+  this.y = y;
+  this.x = x;
   }
-
+  }
 
 
 
@@ -23,9 +23,11 @@ Segment(int x,int y){
 // ***** GAME VARIABLES *****
 // All the game variables that will be shared by the game methods are here
 //*
-int Segment;
+Segment head;
 int foodX;
 int foodY;
+int snakeDirection = UP;
+int foodEaten = 0;
 
 
 
@@ -37,12 +39,15 @@ int foodY;
 
 void setup() {
 size(500,500);
-head = new Segment();
+head = new Segment(100,100);
+frameRate(20);
+dropFood();
 }
 
 void dropFood() {
   //Set the food in a new random location
-    
+    foodX = ((int)random(50)*10);
+    foodY =  ((int)random(50)*10);
 }
 
 
@@ -53,16 +58,23 @@ void dropFood() {
 //*
 
 void draw() {
-  
+  background(#26C444);
+  drawFood();
+  drawSnake();
+  eat();
 }
 
 void drawFood() {
   //Draw the food
-  
+  rect(foodX,foodY,10,10);
+  fill(#33BC9B);
 }
 
 void drawSnake() {
   //Draw the head of the snake followed by its tail
+  rect(100,100,12,12);
+  fill(#6322AF);
+  
 }
 
 
@@ -102,32 +114,46 @@ void keyPressed() {
 void move() {
   //Change the location of the Snake head based on the direction it is moving.
   
-    /*
-  switch(direction) {
+    
+  switch(snakeDirection) {
   case UP:
-    // move head up here 
+    snakeDirection = UP;
     break;
   case DOWN:
-    // move head down here 
+    snakeDirection = DOWN;
     break;
   case LEFT:
-   // figure it out 
+   snakeDirection = LEFT;
     break;
   case RIGHT:
-    // mystery code goes here 
+   snakeDirection = RIGHT;
     break;
   }
-  */
+  checkBoundaries();
 }
 
 void checkBoundaries() {
  //If the snake leaves the frame, make it reappear on the other side
- 
+  if(head.x>500){
+    head.x= 0;
+  }
+  if(head.x<0){
+    head.x= 500;
+  }
+  if(head.y>500){
+    head.y= 0;
+  }
+  if(head.y<0){
+    head.y= 500;
+  }
 }
 
 
 
 void eat() {
   //When the snake eats the food, its tail should grow and more food appear
-
+  if(head.x == foodX && head.y == foodY){
+foodEaten++;
+dropFood();
+  }
 }
