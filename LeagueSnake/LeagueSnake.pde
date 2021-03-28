@@ -62,6 +62,7 @@ void draw() {
   drawFood();
   drawSnake();
   eat();
+  move();
 }
 
 void drawFood() {
@@ -72,7 +73,7 @@ void drawFood() {
 
 void drawSnake() {
   //Draw the head of the snake followed by its tail
-  rect(100,100,12,12);
+  rect(head.x,head.y,10,10);
   fill(#6322AF);
   
 }
@@ -108,7 +109,22 @@ void checkTailCollision() {
 
 void keyPressed() {
   //Set the direction of the snake according to the arrow keys pressed
+  if(keyCode == UP && snakeDirection!=DOWN){
+    snakeDirection = UP;
   
+  }
+  if(keyCode == DOWN && snakeDirection!=UP){
+    snakeDirection = DOWN;
+  
+  }
+  if(keyCode == LEFT && snakeDirection!=RIGHT){
+    snakeDirection = LEFT;
+  
+  }
+  if(keyCode == RIGHT && snakeDirection!=LEFT){
+    snakeDirection = RIGHT;
+  
+  }
 }
 
 void move() {
@@ -117,16 +133,16 @@ void move() {
     
   switch(snakeDirection) {
   case UP:
-    snakeDirection = UP;
+    head.y-=10;
     break;
   case DOWN:
-    snakeDirection = DOWN;
+    head.y+=10;
     break;
   case LEFT:
-   snakeDirection = LEFT;
+   head.x-=10;
     break;
   case RIGHT:
-   snakeDirection = RIGHT;
+   head.x+=10;
     break;
   }
   checkBoundaries();
@@ -155,5 +171,6 @@ void eat() {
   if(head.x == foodX && head.y == foodY){
 foodEaten++;
 dropFood();
+
   }
 }
