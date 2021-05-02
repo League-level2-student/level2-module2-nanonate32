@@ -76,6 +76,7 @@ void drawSnake() {
   //Draw the head of the snake followed by its tail
   rect(head.x,head.y,10,10);
   fill(#6322AF);
+  manageTail();
   
 }
 
@@ -110,6 +111,10 @@ void checkTailCollision() {
   //If the snake crosses its own tail, shrink the tail back to one segment
   for(int i = 0; i < tail.size(); i++){
      if(head.x == tail.get(i).x && head.y == tail.get(i).y){
+       foodEaten = 1;
+       Segment additional = new Segment(head.x,head.y);
+  tail = new ArrayList();
+  tail.add(additional);
   }
  
     
@@ -187,6 +192,7 @@ void eat() {
   if(head.x == foodX && head.y == foodY){
 foodEaten++;
 dropFood();
-
+Segment another = new Segment(head.x,head.y);
+tail.add(another);
   }
 }
