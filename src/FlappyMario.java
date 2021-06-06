@@ -26,7 +26,7 @@ public class FlappyMario extends JFrame {
 		label.setIcon(new ImageIcon(player));
 		BufferedImage pipe = null;
 		try {
-			player = ImageIO.read(this.getClass().getResourceAsStream("pipe.jpeg"));
+			pipe = ImageIO.read(this.getClass().getResourceAsStream("pipe.jpeg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
