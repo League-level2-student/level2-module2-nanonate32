@@ -14,9 +14,11 @@ public class FlappyMario extends JFrame {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
-	
+	JLabel pipe = new JLabel();
+	JLabel Mariokart = new JLabel();
 	public void run() {
 		BufferedImage player = null;
+		
 		try {
 			player = ImageIO.read(this.getClass().getResourceAsStream("MarioKart.png"));
 		} catch (IOException e) {
