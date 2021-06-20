@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class FlappyMario extends JFrame {
-
+	public static BufferedImage image;
+    public static boolean needImage = true;
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
@@ -39,6 +40,12 @@ public class FlappyMario extends JFrame {
 	panel.add(label);
 	frame.setVisible(true);
 	frame.pack();
-	
+	if (needImage) {
+	    loadImage ("pipe.jpeg");
 	}
+	if(needImage)
+		loadImage ("MarioKart.png");
+	 
 }
+	}
+
