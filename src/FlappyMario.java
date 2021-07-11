@@ -1,5 +1,6 @@
 
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -10,13 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class FlappyMario extends JFrame {
+	public final static int HEIGHT = 800;
+	public final static int WIDTH = 500;
 	public static BufferedImage image;
     public static boolean needImage = true;
+    game = new GamePanel();
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
 	JLabel pipe = new JLabel();
 	JLabel Mariokart = new JLabel();
+	frame.AddKeyListener(game);
 	public void run() {
 		BufferedImage player = null;
 		
@@ -45,7 +50,13 @@ public class FlappyMario extends JFrame {
 	}
 	if(needImage)
 		loadImage ("MarioKart.png");
-	 
+	
+	
 }
+void drawMenuState(Graphics g) {
+	g.drawString("Flappy Mario", 40,50);
+	
+}
+	
 	}
 
